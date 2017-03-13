@@ -1,0 +1,34 @@
+apply plugin: 'idea'
+apply plugin: 'war'
+
+
+
+
+repositories {
+    jcenter()
+}
+
+buildscript {
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:1.2.4'
+    }
+    repositories {
+        jcenter()
+    }
+}
+
+
+apply plugin: 'org.akhikhl.gretty'
+
+gretty {
+    servletContainer = 'jetty9'
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}
